@@ -289,7 +289,7 @@
 
         <h3 class="title is-4">Text to Material</h3>
         <div class="columns is-multiline video-results">
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -304,7 +304,7 @@
               <figcaption>Corrugated metal sheet</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -319,7 +319,7 @@
               <figcaption>Dragon carved wood</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -334,7 +334,7 @@
               <figcaption>Split-face concrete blocks</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -349,7 +349,7 @@
               <figcaption>Oxidized copper patina</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -364,7 +364,7 @@
               <figcaption>Frost crystals</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -379,7 +379,7 @@
               <figcaption>Marble bas-relief</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -394,7 +394,7 @@
               <figcaption>Candied orange peel</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -409,7 +409,7 @@
               <figcaption>Quartz crystal</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -424,7 +424,7 @@
               <figcaption>Cork oak bark</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -439,7 +439,7 @@
               <figcaption>Dense animal fur</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -454,7 +454,7 @@
               <figcaption>Sheet moss</figcaption>
             </figure>
           </div>
-          <div class="column is-one-third-desktop is-half-tablet">
+          <div class="column is-half-desktop is-full-tablet">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
                 <span>Generated</span>
@@ -589,6 +589,42 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const resultCards = Array.from(document.querySelectorAll("#results .video-result-card"));
+    resultCards.forEach((card) => {
+      card.querySelectorAll("video").forEach((video) => {
+        video.removeAttribute("autoplay");
+        video.preload = "metadata";
+        video.pause();
+      });
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      resultCards.slice(0, 2).forEach((card) => {
+        card.querySelectorAll("video").forEach((video) => video.play().catch(() => {}));
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const videos = entry.target.querySelectorAll("video");
+        if (entry.isIntersecting) {
+          videos.forEach((video) => video.play().catch(() => {}));
+        } else {
+          videos.forEach((video) => video.pause());
+        }
+      });
+    }, {
+      rootMargin: "350px 0px",
+      threshold: 0.1
+    });
+
+    resultCards.forEach((card) => observer.observe(card));
+  });
+</script>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
