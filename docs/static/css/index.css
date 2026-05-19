@@ -145,8 +145,8 @@ body {
 }
 
 .results-container {
-  max-width: none !important;
-  width: 92vw;
+  max-width: 1152px !important;
+  width: auto;
 }
 
 .results-container > .columns > .column {
