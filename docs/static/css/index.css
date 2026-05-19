@@ -144,11 +144,6 @@ body {
   text-align: center;
 }
 
-.results-container {
-  max-width: 1152px !important;
-  width: auto;
-}
-
 .results-container > .columns > .column {
   flex: none;
   width: 100%;
