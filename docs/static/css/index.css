@@ -146,11 +146,21 @@ body {
 
 .results-container {
   max-width: none !important;
-  width: min(100%, 1680px);
+  width: 100%;
+}
+
+.results-container > .columns > .column {
+  flex: none;
+  width: 100%;
 }
 
 .video-results {
   margin-top: 0.1rem;
+}
+
+#results .video-results > .column {
+  flex: none;
+  width: 50%;
 }
 
 .video-result-card video,
@@ -258,6 +268,10 @@ pre {
 }
 
 @media screen and (max-width: 768px) {
+  #results .video-results > .column {
+    width: 100%;
+  }
+
   .publication-title {
     font-size: 2.05rem !important;
   }
