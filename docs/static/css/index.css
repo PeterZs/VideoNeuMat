@@ -158,9 +158,14 @@ body {
   margin-top: 0.1rem;
 }
 
-#results .video-results > .column {
+#results .final-video-results > .column {
   flex: none;
-  width: 50%;
+  width: 25%;
+}
+
+#results .paired-video-results > .column {
+  flex: none;
+  width: 33.333333%;
 }
 
 .video-result-card video,
@@ -199,6 +204,24 @@ body {
   background: #cfcfcf;
   display: grid;
   gap: 1px;
+}
+
+.final-video-results .result-labels,
+.paired-video-results .result-labels {
+  display: none;
+}
+
+.final-video-results .triplet-media {
+  display: block;
+}
+
+.final-video-results .triplet-media video:not(:last-child),
+.paired-video-results .quad-media video:not(:last-child) {
+  display: none;
+}
+
+.paired-video-results .quad-media {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .more-results {
@@ -268,7 +291,11 @@ pre {
 }
 
 @media screen and (max-width: 768px) {
-  #results .video-results > .column {
+  #results .final-video-results > .column {
+    width: 50%;
+  }
+
+  #results .paired-video-results > .column {
     width: 100%;
   }
 

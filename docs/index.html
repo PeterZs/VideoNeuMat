@@ -116,13 +116,40 @@
       width: 100%;
     }
 
-    #results .video-results > .column {
+    #results .final-video-results > .column {
       flex: none;
-      width: 50%;
+      width: 25%;
+    }
+
+    #results .paired-video-results > .column {
+      flex: none;
+      width: 33.333333%;
+    }
+
+    #results .final-video-results .result-labels,
+    #results .paired-video-results .result-labels {
+      display: none;
+    }
+
+    #results .final-video-results .triplet-media {
+      display: block;
+    }
+
+    #results .final-video-results .triplet-media video:not(:last-child),
+    #results .paired-video-results .quad-media video:not(:last-child) {
+      display: none;
+    }
+
+    #results .paired-video-results .quad-media {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     @media screen and (max-width: 768px) {
-      #results .video-results > .column {
+      #results .final-video-results > .column {
+        width: 50%;
+      }
+
+      #results .paired-video-results > .column {
         width: 100%;
       }
     }
@@ -310,7 +337,7 @@
         <h2 class="title is-3">Results</h2>
 
         <h3 class="title is-4">Text to Material</h3>
-        <div class="columns is-multiline video-results">
+        <div class="columns is-multiline video-results final-video-results">
           <div class="column is-half">
             <figure class="result-card video-result-card">
               <div class="result-labels triplet-labels">
@@ -491,10 +518,106 @@
               <figcaption>Sphagnum moss</figcaption>
             </figure>
           </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0004_seed0_v4_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Reindeer moss lichen</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0007_seed42_full_10000iter_cfg5_vcomplex_res1024_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Raw linen weave</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0008_seed0_lora_9000iter_res1024_cfg5_vcomplex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Backlit beeswax honeycomb</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0009_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Barnacle-encrusted surface</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0010_seed0_lora_9000iter_res1024_cfg5_complex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Dry-stacked stone</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0011_seed0_v4_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Sandstone ashlar wall</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0013_seed0_v4_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Marine-corroded steel</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0018_seed0_lora_9000iter_res1024_cfg5_complex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Cross-knurled metal</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0019_seed0_lora_9000iter_res1024_cfg5_complex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Rammed-earth wall</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0020_seed42_full_rectify11000complex1k_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Natural marble stone</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0021_seed0_v4_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Rust blooms on galvanized steel</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0025_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Bar grating steel</figcaption>
+            </figure>
+          </div>
         </div>
 
         <h3 class="title is-4">Single Image to Material</h3>
-        <div class="columns is-multiline video-results">
+        <div class="columns is-multiline video-results paired-video-results">
           <div class="column is-half">
             <figure class="result-card video-result-card">
               <div class="result-labels quad-labels">
@@ -597,6 +720,33 @@
               <figcaption>Image-conditioned stylized terrain material</figcaption>
             </figure>
           </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="quad-media">
+                <img src="assets/gallery/i2v/AdobeStock_1676844567_input.jpg" alt="Image prompt material sample.">
+                <video src="assets/gallery/i2v/AdobeStock_1676844567_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Image-conditioned material sample</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="quad-media">
+                <img src="assets/gallery/i2v/AdobeStock_1847067713_input.jpg" alt="Image prompt material sample.">
+                <video src="assets/gallery/i2v/AdobeStock_1847067713_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Image-conditioned material sample</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="result-card video-result-card">
+              <div class="quad-media">
+                <img src="assets/gallery/i2v/AdobeStock_1862872390_input.jpg" alt="Image prompt material sample.">
+                <video src="assets/gallery/i2v/AdobeStock_1862872390_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Image-conditioned material sample</figcaption>
+            </figure>
+          </div>
         </div>
         <div class="more-results">
           <a href="supplementary_assets.html"
@@ -615,24 +765,27 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const resultCards = Array.from(document.querySelectorAll("#results .video-result-card"));
+    const activeVideoSelector = ".final-video-results .triplet-media video:last-child, .paired-video-results .quad-media video:last-child";
+    const activeVideos = (card) => Array.from(card.querySelectorAll("video")).filter((video) => video.matches(activeVideoSelector));
+
     resultCards.forEach((card) => {
       card.querySelectorAll("video").forEach((video) => {
         video.removeAttribute("autoplay");
-        video.preload = "metadata";
         video.pause();
+        video.preload = video.matches(activeVideoSelector) ? "metadata" : "none";
       });
     });
 
     if (!("IntersectionObserver" in window)) {
       resultCards.slice(0, 2).forEach((card) => {
-        card.querySelectorAll("video").forEach((video) => video.play().catch(() => {}));
+        activeVideos(card).forEach((video) => video.play().catch(() => {}));
       });
       return;
     }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const videos = entry.target.querySelectorAll("video");
+        const videos = activeVideos(entry.target);
         if (entry.isIntersecting) {
           videos.forEach((video) => video.play().catch(() => {}));
         } else {
