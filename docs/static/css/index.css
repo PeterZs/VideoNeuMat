@@ -146,7 +146,7 @@ body {
 
 .results-container {
   max-width: none !important;
-  width: 100%;
+  width: min(100%, 1760px);
 }
 
 .results-container > .columns > .column {
