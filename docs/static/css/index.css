@@ -144,6 +144,11 @@ body {
   text-align: center;
 }
 
+.results-container {
+  max-width: none !important;
+  width: min(100%, 1680px);
+}
+
 .video-results {
   margin-top: 0.1rem;
 }
