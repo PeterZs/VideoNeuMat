@@ -105,6 +105,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <style>
+    #results .results-container {
+      max-width: none !important;
+      width: 100%;
+    }
+
+    #results .results-container > .columns > .column {
+      flex: none;
+      width: 100%;
+    }
+
+    #results .video-results > .column {
+      flex: none;
+      width: 50%;
+    }
+
+    @media screen and (max-width: 768px) {
+      #results .video-results > .column {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
