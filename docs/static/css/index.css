@@ -160,7 +160,7 @@ body {
 
 #results .final-video-results > .column {
   flex: none;
-  width: 25%;
+  width: 33.333333%;
 }
 
 #results .paired-video-results > .column {
