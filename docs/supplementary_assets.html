@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoNeuMat - Material Gallery (LRM Fitting + Env Light Render)</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #eee;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin: 40px 0 20px;
+            padding: 12px 20px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            font-size: 1.3em;
+        }
+        .section-info {
+            margin-bottom: 20px;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(900px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .card-content {
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+        }
+        .media-container {
+            flex: 1;
+            text-align: center;
+        }
+        .media-container img, .media-container video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #000;
+            display: block;
+        }
+        .media-label {
+            margin-top: 6px;
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .prompt-box {
+            padding: 10px 15px;
+            background: rgba(0,0,0,0.3);
+            font-size: 11px;
+            color: #777;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            line-height: 1.4;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: 10px;
+            font-weight: normal;
+        }
+        .tag-i2m { background: #00b894; color: #fff; }
+        .tag-t2m { background: #e17055; color: #fff; }
+        .stats {
+            text-align: center;
+            margin: 20px 0 30px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .stats strong { color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>VideoNeuMat: Neural Material Gallery</h1>
+    <p class="subtitle">Neural Material Extraction from Generative Video Models (LRM Fitting + Env Light Render)</p>
+
+    <div class="stats">
+        <strong>Total Materials:</strong> 112 |
+        <strong>T2M (Text-conditioned):</strong> 103 |
+        <strong>I2M (Image-conditioned):</strong> 9
+    </div>
+
+    <h2>Text-to-Material (T2M) Results <span class="tag tag-t2m">103 materials</span></h2>
+    <div class="section-info">
+        <strong>Input:</strong> Text prompt |
+        <strong>Generated:</strong> Video model output |
+        <strong>LRM Fitting:</strong> same view as generated |
+        <strong>Env Light Render:</strong> square material under environment light
+    </div>
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed0_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed0_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of a corrugated metal sheet with deep, repeating ridges. Fine scratches and faint oxidation vary across the peaks and valleys. The framing is tight, filling the</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed1387684638_comparision2unet2k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed1387684638_comparision2unet2k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed1387684638_comparision2unet2k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of carved stone with ancient carvings patterns</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed1766823148_comparision2lora10k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed1766823148_comparision2lora10k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed1766823148_comparision2lora10k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of carved stone with ancient carvings patterns</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed377737925_comparision2lora5k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed377737925_comparision2lora5k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed377737925_comparision2lora5k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of carved stone with ancient carvings patterns</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed42_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed42_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed42_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of a corrugated metal sheet with deep, repeating ridges. Fine scratches and faint oxidation vary across the peaks and valleys. The framing is tight, filling the</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed473850837_comparision2unet9k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed473850837_comparision2unet9k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed473850837_comparision2unet9k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of carved stone with ancient carvings patterns</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed789_comparisionloratile5000iter_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed789_comparisionloratile5000iter_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0001_seed789_comparisionloratile5000iter_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of carved stone with ancient carvings patterns</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_comparisionunettile_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_comparisionunettile_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_comparisionunettile_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Dragon carved wood</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_complex1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_complex1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_complex1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of split-face concrete blocks with rough, protruding aggregates. Jagged clefts and broken arrises cast compact shadows. The framing is tight, filling the scene</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_vcomplex_res1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_vcomplex_res1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_vcomplex_res1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of frost crystals with dendritic branching patterns. Faceted ice needles scatter light through internal refraction and surface reflection. Irregular nucleation </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_v3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_v3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_v3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of ancient marble bas-relief with classical motifs, polished high points contrasting with rough recessed areas, subtle crystalline structure visible in angled l</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_v4_1_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_v4_1_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed0_v4_1_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of candied orange peel with crystalline sugar coating, translucent amber color from cooking process, sugar crystals highlighting surface dimples, glossy section</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed1506751613_v3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed1506751613_v3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed1506751613_v3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of dried orange peel with concentrated texture, shrunken surface emphasizing original pore structure, deepened orange-brown color from dehydration, brittle curl</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed324_full_10000iter_cfg5_4_1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed324_full_10000iter_cfg5_4_1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed324_full_10000iter_cfg5_4_1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">plant with green leaves and fruits in garden with raised leaf surfaces and recessed vein channels</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed324_lora_9000iter_res1024_cfg5_1_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed324_lora_9000iter_res1024_cfg5_1_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed324_lora_9000iter_res1024_cfg5_1_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">Crystalline, jagged surface of a quartz crystal with sharp protruding facets and deep angular recesses between crystal faces</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed42_comparisionloratile_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed42_comparisionloratile_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed42_comparisionloratile_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Dragon carved wood</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed42_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed42_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed42_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of split-face concrete blocks with rough, protruding aggregates. Jagged clefts and broken arrises cast compact shadows. The framing is tight, filling the scene</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed517670793_comparision2unet2k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed517670793_comparision2unet2k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed517670793_comparision2unet2k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Dragon carved wood</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed526853611_comparision2lora10k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed526853611_comparision2lora10k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed526853611_comparision2lora10k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Dragon carved wood</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed759729275_comparision2unet9k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed759729275_comparision2unet9k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0002_seed759729275_comparision2unet9k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Dragon carved wood</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_comparisionunettile_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_comparisionunettile_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_comparisionunettile_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of dragon molded copper</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_full_10000iter_cfg5_complex_1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_full_10000iter_cfg5_complex_1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_full_10000iter_cfg5_complex_1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of cork oak bark with deep vertical furrows and flaky ridges. Minor chips and torn edges add complexity to the relief. The camera remains stationary, providing </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of ebony-inlaid teak dragon panel, contrasting dark scales against golden-brown background, precise geometric scale pattern with metallic wood shimmer, deep thr</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed1617044069_comparision2lora10k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed1617044069_comparision2lora10k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed1617044069_comparision2lora10k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of dragon molded copper</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed324_full_9500_btfcamera_cfg5_vcom1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed324_full_9500_btfcamera_cfg5_vcom1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed324_full_9500_btfcamera_cfg5_vcom1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip depicts a close-up view of dense animal fur with individual guard hairs overlapping softer undercoat. Directional lay creates view-dependent gloss lobes and retroreflective hotspots. Ha</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed42_full_10000iter_cfg5_vcomplex_res1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed42_full_10000iter_cfg5_vcomplex_res1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0003_seed42_full_10000iter_cfg5_vcomplex_res1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip depicts a close-up view of dense animal fur with individual guard hairs overlapping softer undercoat. Directional lay creates view-dependent gloss lobes and retroreflective hotspots. Ha</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_lora_9000iter_res1024_cfg5_vcomplex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_lora_9000iter_res1024_cfg5_vcomplex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_lora_9000iter_res1024_cfg5_vcomplex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of oxidized copper with verdigris patina. Turquoise and malachite green deposits form irregular crusts over reddish base metal. Crystalline blooms and flaking </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v2_1_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v2_1_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v2_1_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of sheet moss carpeting forest floor, low-growing continuous mat with uniform height, varied green tones from lime to deep forest, fine branching structure visi</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of sphagnum moss with starry rosette pattern, pale yellow-green tips above darker older growth, water-saturated translucent appearance, delicate frond-like bran</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of reindeer moss lichen colony in silver-green tones, intricate branching coral-like structure, dry crisp texture with slight brittleness, pale sage color with </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v4_2_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v4_2_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed0_v4_2_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of reindeer moss lichen colony in silver-green tones, intricate branching coral-like structure, dry crisp texture with slight brittleness, pale sage color with </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed42_full_rectify11000complex1k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed42_full_rectify11000complex1k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed42_full_rectify11000complex1k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of cedar shingles overlapped in tight courses. Weathered grain and lifted lips cast compact shadows. The camera remains stationary, providing a stable, consist</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed42_lora9000res512cfg5ori1024infcmp_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed42_lora9000res512cfg5ori1024infcmp_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed42_lora9000res512cfg5ori1024infcmp_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of vesicular basalt with porous cavities and ledged surfaces. Subtle tonal variation emphasizes depth without distraction. The framing is tight, filling the sc</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed832623965_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed832623965_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed832623965_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of reindeer moss lichen colony in silver-green tones, intricate branching coral-like structure, dry crisp texture with slight brittleness, pale sage color with </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed99_comparisionlora_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed99_comparisionlora_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0004_seed99_comparisionlora_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of glazed ceramic with blue</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed0_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed0_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip depicts a close-up view of river cobblestones set in recessed mortar. Rounded stones alternate with shadowed joints, highlighting relief. The camera remains stationary, providing a stab</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed1597456123_comparisionlora_original_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed1597456123_comparisionlora_original_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed1597456123_comparisionlora_original_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of dragon embroidered fabric</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed42_comparisionunettile2000_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed42_comparisionunettile2000_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed42_comparisionunettile2000_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of dragon embroidered fabric</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed42_lora_9000iter_res1024_cfg5_vcomplex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed42_lora_9000iter_res1024_cfg5_vcomplex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed42_lora_9000iter_res1024_cfg5_vcomplex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of morpho butterfly wing scales with photonic nanostructure. Brilliant cyan iridescence originates from diffraction gratings rather than pigmentation. Overlappi</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed747935980_comparision2unet9k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed747935980_comparision2unet9k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed747935980_comparision2unet9k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of carved stone with ancient carvings patterns</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0005_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of layered porcelain glaze with translucent blue over iron-red underglaze, depth effect from multiple transparent layers, fine crazing revealing historical cool</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed0_v3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed0_v3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed0_v3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Suzhou embroidery dragon in split stitch technique, impossibly fine silk threads creating realistic depth, iridescent effect from directional stitching, subt</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed709384007_comparision2unet2k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed709384007_comparision2unet2k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed709384007_comparision2unet2k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Bumpy uneven texture of an orange peel</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed789_comparisionloratileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed789_comparisionloratileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed789_comparisionloratileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of contemporary machine embroidery dragon with digital precision, dense fill stitches creating photorealistic scales, gradient thread colors shifting across for</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0006_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of contemporary machine embroidery dragon with digital precision, dense fill stitches creating photorealistic scales, gradient thread colors shifting across for</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed0_v3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed0_v3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed0_v3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Khmer sandstone temple relief with dancing apsaras, soft weathered features from tropical rain exposure, intricate costume details partially eroded, lichen a</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Chinese jade burial suit fragment with archaic dragon motifs, translucent nephrite with mottled green coloring, shallow relief carving with polished surfaces</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed42_full_10000iter_cfg5_vcomplex_res1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed42_full_10000iter_cfg5_vcomplex_res1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed42_full_10000iter_cfg5_vcomplex_res1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of raw linen weave with interlaced warp and weft threads. Deep inter-thread shadows create view-dependent occlusion and masking effects. Individual fiber bundl</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0007_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Persian limestone capital with acanthus leaf carving, Hellenistic influence in naturalistic foliage, deep undercutting creating dramatic shadows, centuries o</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0008_seed0_lora_9000iter_res1024_cfg5_vcomplex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0008_seed0_lora_9000iter_res1024_cfg5_vcomplex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0008_seed0_lora_9000iter_res1024_cfg5_vcomplex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of backlit beeswax with translucent hexagonal cells. Light diffuses through thin walls, revealing internal structure and trapped air pockets. Subtle surface cra</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0008_seed99_comparisionlora_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0008_seed99_comparisionlora_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0008_seed99_comparisionlora_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of glazed ceramic with blue and yellow</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed0_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed0_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of barnacle-encrusted surface with clustered shells and voids. Hairline cracks and mineral deposits lend a weathered character. The framing is tight, filling th</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed0_lora9000res512cfg5ori1024infmdm_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed0_lora9000res512cfg5ori1024infmdm_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed0_lora9000res512cfg5ori1024infmdm_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of pebble-grain leather with rounded, mid-scale pebbling. Slight sheen shifts along the grain. Camera remains stationary; even, soft light. Medium geometric di</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed42_full_9500_btfcamera_cfg5_complexs1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed42_full_9500_btfcamera_cfg5_complexs1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0009_seed42_full_9500_btfcamera_cfg5_complexs1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of serrated metal tread with tall, tooth-like profiles and undercuts. Micro-scratches run diagonally across the faces. The camera remains stationary, providing </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed0_lora_9000iter_res1024_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed0_lora_9000iter_res1024_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed0_lora_9000iter_res1024_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of dry-stacked stone with uneven faces and proud edges. Narrow recesses between blocks create deep occlusion. The camera remains stationary, providing a stable</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed2070457309_lora_9000iter_res512_cfg5_original_prompt_1024inference_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed2070457309_lora_9000iter_res512_cfg5_original_prompt_1024inference_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed2070457309_lora_9000iter_res512_cfg5_original_prompt_1024inference_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of herringbone wool fabric with raised twill ridges. Loose fibers create micro-relief along seams. Full-frame material, neutral perspective. Medium geometric di</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed269012744_comparisionunet_original_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed269012744_comparisionunet_original_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed269012744_comparisionunet_original_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of stone wall background and copy space</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed324_full_9500_btfcamera_cfg5_complex1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed324_full_9500_btfcamera_cfg5_complex1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed324_full_9500_btfcamera_cfg5_complex1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of dry-stacked stone with uneven faces and proud edges. Narrow recesses between blocks create deep occlusion. The camera remains stationary, providing a stable</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_full_9500_btfcamera_cfg5_complex1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_full_9500_btfcamera_cfg5_complex1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_full_9500_btfcamera_cfg5_complex1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of dry-stacked stone with uneven faces and proud edges. Narrow recesses between blocks create deep occlusion. The camera remains stationary, providing a stable</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_lora_9000iter_res1024_cfg5_vcomplex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_lora_9000iter_res1024_cfg5_vcomplex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_lora_9000iter_res1024_cfg5_vcomplex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of crimson velvet fabric with dense pile structure. Individual fibers create view-dependent sheen that brightens when viewed near the light direction. Subtle c</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_lora_tile14000complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_lora_tile14000complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0010_seed42_lora_tile14000complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of dry-stacked stone with uneven faces and proud edges. Narrow recesses between blocks create deep occlusion. The camera remains stationary, providing a stable</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed0_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed0_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of woven cane with pronounced over-under strands forming hexagonal cells. Slight fray and fiber crossings are visible. The framing is tight, filling the scene e</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of sandstone ashlar wall with precise cut blocks, warm honey-gold color with iron banding, fine tool marks in consistent diagonal pattern, hairline joints with </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed581773592_lora_9000iter_res512_cfg7_original_prompt_1024inference_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed581773592_lora_9000iter_res512_cfg7_original_prompt_1024inference_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed581773592_lora_9000iter_res512_cfg7_original_prompt_1024inference_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip depicts a close-up view of basketweave rattan panel with modest over-under crossings. Occasional splinters and cane nodes add interest. Static camera, perpendicular view. Medium geometr</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed789_comparisionloratileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed789_comparisionloratileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed789_comparisionloratileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of slate rubble wall with blue-grey angular fragments, sharp cleaved faces catching light at varied angles, small gaps and voids adding shadow depth, natural co</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0011_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of slate rubble wall with blue-grey angular fragments, sharp cleaved faces catching light at varied angles, small gaps and voids adding shadow depth, natural co</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed11334489_comparision2unet9k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed11334489_comparision2unet9k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed11334489_comparision2unet9k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Red rock cliff</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed295011990_comparision2unet2k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed295011990_comparision2unet2k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed295011990_comparision2unet2k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Red rock cliff</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed42_comparisionunettile2000_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed42_comparisionunettile2000_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed42_comparisionunettile2000_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of texture background metal surface eroding and being covered with rust</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed789_comparisionloratile5000iter_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed789_comparisionloratile5000iter_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0012_seed789_comparisionloratile5000iter_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of texture background metal surface eroding and being covered with rust</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0013_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0013_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0013_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of marine-corroded steel with salt deposits, white crystalline formations on deep red-brown rust, extreme pitting and surface loss from galvanic corrosion, grad</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0013_seed996_comparisionunettile2000iter_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0013_seed996_comparisionunettile2000iter_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0013_seed996_comparisionunettile2000iter_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of background of a woven leather strap close-up</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0014_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0014_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0014_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of hand-plaited leather belt with uneven charm, honest irregularities showing human handwork, worn polish at buckle contact area, varied strip widths and tensio</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0015_seed0_full_10000iter_cfg5_medium1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0015_seed0_full_10000iter_cfg5_medium1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0015_seed0_full_10000iter_cfg5_medium1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of basketwoven jute rug with chunky yarns forming modest relief. Stray fibers and twisted strands show variation. Perpendicular view, tight composition. Medium </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0016_seed996_comparisionunettile2000iter_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0016_seed996_comparisionunettile2000iter_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0016_seed996_comparisionunettile2000iter_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of brown leather close-up, production of handmade accessories made of animal skin</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0017_seed0_comparisionunettile_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0017_seed0_comparisionunettile_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0017_seed0_comparisionunettile_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of many leafs of ivy cover on bridge. Strong geometric displacement / true height map.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0017_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0017_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0017_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of bridle leather with characteristic glossy finish, dense firm hand from heavy stuffing with oils and waxes, deep mahogany color with excellent depth, fine peb</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed0_lora_9000iter_res1024_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed0_lora_9000iter_res1024_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed0_lora_9000iter_res1024_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of cross-knurled metal with deep, crisscrossing grooves and raised diamonds. Fine machining lines are evident on the facets. The framing is tight, filling the s</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed789_comparisionloratileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed789_comparisionloratileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed789_comparisionloratileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of frost-touched ivy with ice crystal decoration, frozen dewdrops on dark green leaves, damaged brown edges from cold exposure, persistent evergreen character d</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0018_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of frost-touched ivy with ice crystal decoration, frozen dewdrops on dark green leaves, damaged brown edges from cold exposure, persistent evergreen character d</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0019_seed0_lora_9000iter_res1024_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0019_seed0_lora_9000iter_res1024_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0019_seed0_lora_9000iter_res1024_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of rammed-earth wall with compacted layers and coarse aggregate protrusions. Small voids and torn edges lend realism. The camera remains stationary, providing </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0019_seed324_lora_9000iter_res1024_cfg5_4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0019_seed324_lora_9000iter_res1024_cfg5_4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0019_seed324_lora_9000iter_res1024_cfg5_4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">crumpled white paper with brown edges with sharp raised crease peaks and deep recessed fold valleys, aged paper displacement</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0020_seed42_full_rectify11000complex1k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0020_seed42_full_rectify11000complex1k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0020_seed42_full_rectify11000complex1k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">Background marble, natural stone of different colors</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0021_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0021_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0021_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of rust blooms on galvanized steel, zinc coating failure revealing orange corrosion beneath, white zinc oxide mixed with iron rust, transition zone showing corr</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0021_seed789_comparisionloratileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0021_seed789_comparisionloratileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0021_seed789_comparisionloratileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of marine rust on ship hull plate, extreme corrosion with deep pitting and surface loss, salt deposits creating white crystalline patches, barnacle scars and bi</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0023_seed0_lora9000res512cfg5ori1024infmdm_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0023_seed0_lora9000res512cfg5ori1024infmdm_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0023_seed0_lora9000res512cfg5ori1024infmdm_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of cross-knurled metal with fine, mid-height diamonds and softened peaks. Machining lines are visible. Static camera, evenly lit. Medium geometric displacement </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0024_seed42_full_rectify11000complex1k_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0024_seed42_full_rectify11000complex1k_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0024_seed42_full_rectify11000complex1k_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of highly pitted tufa stone with irregular cavities and bridging rims. Subtle mineral stains vary across the relief. There is no camera motion, emphasizing the </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed0_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed0_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of bar grating with thick, raised steel bars and recessed slots. Fine scale and mill marks add secondary texture. The camera remains stationary, providing a st</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed324_lora_9000iter_res1024_cfg5_4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed324_lora_9000iter_res1024_cfg5_4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed324_lora_9000iter_res1024_cfg5_4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">white paper texture with raised fiber clusters and shallow surface grain depressions</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed359014667_lora_9000iter_res512_cfg7_original_prompt_1024inference_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed359014667_lora_9000iter_res512_cfg7_original_prompt_1024inference_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed359014667_lora_9000iter_res512_cfg7_original_prompt_1024inference_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of leather with basket emboss, mid-depth crossings and rounded corners. Slight crease lines run between nodes. Camera remains stationary. Medium geometric displ</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed42_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed42_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0025_seed42_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip showcases a close-up view of bar grating with thick, raised steel bars and recessed slots. Fine scale and mill marks add secondary texture. The camera remains stationary, providing a st</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0027_seed0_v4_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0027_seed0_v4_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0027_seed0_v4_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of torn croissant revealing laminated interior, stretchy gluten strands connecting separated layers, steamy soft crumb with butter aroma suggested, contrast bet</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0027_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0027_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0027_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of chocolate croissant with visible filling, dark chocolate glimpsed through golden pastry, slightly collapsed layers from filling weight, sugar crystal decorat</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0028_seed188757885_lora_9000iter_res512_cfg5_original_prompt_1024inference_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0028_seed188757885_lora_9000iter_res512_cfg5_original_prompt_1024inference_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0028_seed188757885_lora_9000iter_res512_cfg5_original_prompt_1024inference_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of denim twill with pronounced diagonal ribs and softened yarn peaks. Frayed spots add micro-depth. Neutral perspective, full-frame. Medium geometric displaceme</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0031_seed996_comparisionunettile2000iter_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0031_seed996_comparisionunettile2000iter_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0031_seed996_comparisionunettile2000iter_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Red rock cliff. Strong geometric displacement / true height map.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed42_lora9000res512cfg5ori1024infcmp_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed42_lora9000res512cfg5ori1024infcmp_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed42_lora9000res512cfg5ori1024infcmp_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">Texture of black fur of a cow, bull closeup. background, design, ideas.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed996_comparisionunettileexpanded_prompts_v5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed996_comparisionunettileexpanded_prompts_v5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed996_comparisionunettileexpanded_prompts_v5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of moss-covered stone with varied species colonization, multiple textures from smooth sheet to fuzzy cushion, green gradients indicating moisture levels, organi</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed99_comparisionlora_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed99_comparisionlora_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0036_seed99_comparisionlora_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">The video clip features a close-up view of Translucent jellyfish-like surface of a mystical portal. Strong geometric displacement / true height map.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0046_seed324_full_10000iter_cfg5_2_1024_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0046_seed324_full_10000iter_cfg5_2_1024_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0046_seed324_full_10000iter_cfg5_2_1024_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">Many leafs of ivy covering bridge with raised overlapping leaf surfaces and recessed shadowed depths</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0046_seed324_lora_9000iter_res1024_cfg5_2_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0046_seed324_lora_9000iter_res1024_cfg5_2_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0046_seed324_lora_9000iter_res1024_cfg5_2_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">Many leafs of ivy covering bridge with raised overlapping leaf surfaces and recessed shadowed depths</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0047_seed324_lora_9000iter_res1024_cfg5_3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0047_seed324_lora_9000iter_res1024_cfg5_3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0047_seed324_lora_9000iter_res1024_cfg5_3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">office carpet black white red pattern with raised carpet pile tufts and recessed backing level, patterned height variation</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0048_seed324_lora_9000iter_res1024_cfg5_3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0048_seed324_lora_9000iter_res1024_cfg5_3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0048_seed324_lora_9000iter_res1024_cfg5_3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">Modern gray carpet texture with raised dense pile tufts and deep recessed backing level, soft floor covering displacement</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0051_seed324_lora_9000iter_res1024_cfg5_3_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0051_seed324_lora_9000iter_res1024_cfg5_3_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/t2v/0051_seed324_lora_9000iter_res1024_cfg5_3_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+            <div class="prompt-box">background towel with raised terry loop piles and recessed base weave, absorbent fabric displacement</div>
+        </div>
+    </div>
+
+    <h2>Image-to-Material (I2M) Results <span class="tag tag-i2m">9 materials</span></h2>
+    <div class="section-info">
+        <strong>Input:</strong> Real photograph |
+        <strong>Generated:</strong> Video model output |
+        <strong>LRM Fitting:</strong> same view as generated |
+        <strong>Env Light Render:</strong> square material under environment light
+    </div>
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_1228231055_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1228231055_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1228231055_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1228231055_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_1521938694_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1521938694_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1521938694_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1521938694_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_1667862821_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1667862821_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1667862821_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1667862821_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_1676844567_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1676844567_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1676844567_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1676844567_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_1847067713_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1847067713_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1847067713_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1847067713_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_1860915269_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1860915269_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1860915269_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1860915269_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_1862872390_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1862872390_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1862872390_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_1862872390_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/AdobeStock_80744260_input.jpg" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_80744260_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_80744260_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/AdobeStock_80744260_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="media-container">
+                    <img src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_input.png" alt="Input">
+                    <div class="media-label">Input Image</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_gt.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Generated Video</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_trainview.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">LRM Fitting</div>
+                </div>
+                <div class="media-container">
+                    <video src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_lrm.mp4" autoplay loop muted playsinline></video>
+                    <div class="media-label">Env Light Render</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const videos = Array.from(document.querySelectorAll('video'));
+            const cards = Array.from(document.querySelectorAll('.card'));
+
+            // Disable autoplay and reduce network load.
+            videos.forEach((video) => {
+                video.removeAttribute('autoplay');
+                video.preload = 'metadata';
+                video.pause();
+            });
+
+            if (!('IntersectionObserver' in window)) {
+                return;
+            }
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        const card = entry.target;
+                        const cardVideos = Array.from(card.querySelectorAll('video'));
+                        if (entry.isIntersecting) {
+                            cardVideos.forEach((video) => {
+                                try {
+                                    video.currentTime = 0;
+                                } catch (e) {
+                                    // Ignore seek errors for not-ready videos.
+                                }
+                            });
+                            cardVideos.forEach((video) => {
+                                const playPromise = video.play();
+                                if (playPromise && typeof playPromise.catch === 'function') {
+                                    playPromise.catch(() => {});
+                                }
+                            });
+                        } else {
+                            cardVideos.forEach((video) => video.pause());
+                        }
+                    });
+                },
+                { threshold: 0.25 }
+            );
+
+            cards.forEach((card) => observer.observe(card));
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    videos.forEach((video) => video.pause());
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

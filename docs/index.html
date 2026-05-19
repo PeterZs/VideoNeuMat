@@ -179,6 +179,15 @@
               </a>
             </span>
             <span class="link-block">
+              <a href="supplementary_assets.html"
+                 target="_blank"
+                 rel="noopener"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-layer-group"></i></span>
+                <span>More Results</span>
+              </a>
+            </span>
+            <span class="link-block">
               <a href="#video"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="fab fa-youtube"></i></span>
@@ -216,20 +225,6 @@
           </video>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero teaser">
-  <div class="container is-max-widescreen">
-    <div class="hero-body">
-      <figure class="teaser-figure">
-        <img src="assets/original/teaser_hero.jpg"
-             alt="VideoNeuMat representative neural material results.">
-      </figure>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">VideoNeuMat</span> generates realistic and diverse neural materials from text or image prompts.
-      </h2>
     </div>
   </div>
 </section>
@@ -291,149 +286,120 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Results</h2>
+        <p class="results-intro">
+          Representative examples from the full material gallery. Each sample shows the generated
+          material video, the LRM fitting view, and the environment-light render.
+        </p>
 
         <h3 class="title is-4">Text to Material</h3>
-        <div class="columns is-multiline material-pairs">
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/basketweave_reconstruction.jpg" alt="Basketweave reconstruction.">
-                <img src="assets/original/recon/basketweave_curved.jpg" alt="Basketweave on curved geometry.">
+        <div class="columns is-multiline video-results">
+          <div class="column is-half-desktop is-full-tablet">
+            <figure class="result-card video-result-card">
+              <div class="result-labels triplet-labels">
+                <span>Generated</span>
+                <span>LRM Fitting</span>
+                <span>Env Render</span>
               </div>
-              <figcaption>Basketweave</figcaption>
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0001_seed0_full_10000iter_cfg5_complex_gt.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0001_seed0_full_10000iter_cfg5_complex_trainview.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0001_seed0_full_10000iter_cfg5_complex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Corrugated metal sheet</figcaption>
             </figure>
           </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/black_cow_fur_reconstruction.jpg" alt="Black cow fur reconstruction.">
-                <img src="assets/original/recon/black_cow_fur_curved.jpg" alt="Black cow fur on curved geometry.">
+          <div class="column is-half-desktop is-full-tablet">
+            <figure class="result-card video-result-card">
+              <div class="result-labels triplet-labels">
+                <span>Generated</span>
+                <span>LRM Fitting</span>
+                <span>Env Render</span>
               </div>
-              <figcaption>Black cow fur</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/brown_woven_leather_reconstruction.jpg" alt="Brown woven leather reconstruction.">
-                <img src="assets/original/recon/brown_woven_leather_curved.jpg" alt="Brown woven leather on curved geometry.">
-              </div>
-              <figcaption>Brown woven leather</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/crimson_velvet_reconstruction.jpg" alt="Crimson velvet reconstruction.">
-                <img src="assets/original/recon/crimson_velvet_curved.jpg" alt="Crimson velvet on curved geometry.">
-              </div>
-              <figcaption>Crimson velvet</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/dragon_carved_wood_reconstruction.jpg" alt="Dragon carved wood reconstruction.">
-                <img src="assets/original/recon/dragon_carved_wood_curved.jpg" alt="Dragon carved wood on curved geometry.">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0002_seed0_comparisionunettile_gt.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0002_seed0_comparisionunettile_trainview.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0002_seed0_comparisionunettile_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
               </div>
               <figcaption>Dragon carved wood</figcaption>
             </figure>
           </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/frost_ivy_reconstruction.jpg" alt="Frost ivy reconstruction.">
-                <img src="assets/original/recon/frost_ivy_curved.jpg" alt="Frost ivy on curved geometry.">
+          <div class="column is-half-desktop is-full-tablet">
+            <figure class="result-card video-result-card">
+              <div class="result-labels triplet-labels">
+                <span>Generated</span>
+                <span>LRM Fitting</span>
+                <span>Env Render</span>
               </div>
-              <figcaption>Frost ivy</figcaption>
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_complex1024_gt.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_complex1024_trainview.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0002_seed0_full_10000iter_cfg5_complex1024_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
+              </div>
+              <figcaption>Split-face concrete blocks</figcaption>
             </figure>
           </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/knurled_metal_reconstruction.jpg" alt="Knurled metal reconstruction.">
-                <img src="assets/original/recon/knurled_metal_curved.jpg" alt="Knurled metal on curved geometry.">
+          <div class="column is-half-desktop is-full-tablet">
+            <figure class="result-card video-result-card">
+              <div class="result-labels triplet-labels">
+                <span>Generated</span>
+                <span>LRM Fitting</span>
+                <span>Env Render</span>
               </div>
-              <figcaption>Knurled metal</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/pizza_crust_reconstruction.jpg" alt="Pizza crust reconstruction.">
-                <img src="assets/original/recon/pizza_crust_curved.jpg" alt="Pizza crust on curved geometry.">
+              <div class="triplet-media">
+                <video src="assets/gallery/t2v/0004_seed0_lora_9000iter_res1024_cfg5_vcomplex_gt.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0004_seed0_lora_9000iter_res1024_cfg5_vcomplex_trainview.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/t2v/0004_seed0_lora_9000iter_res1024_cfg5_vcomplex_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
               </div>
-              <figcaption>Pizza crust</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/stone_wall_reconstruction.jpg" alt="Stone wall reconstruction.">
-                <img src="assets/original/recon/stone_wall_curved.jpg" alt="Stone wall on curved geometry.">
-              </div>
-              <figcaption>Stone wall</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/white_faux_fur_reconstruction.jpg" alt="White faux fur reconstruction.">
-                <img src="assets/original/recon/white_faux_fur_curved.jpg" alt="White faux fur on curved geometry.">
-              </div>
-              <figcaption>White faux fur</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/hay_reconstruction.jpg" alt="Hay reconstruction.">
-                <img src="assets/original/recon/hay_curved.jpg" alt="Hay on curved geometry.">
-              </div>
-              <figcaption>Hay</figcaption>
-            </figure>
-          </div>
-          <div class="column is-one-quarter-desktop is-half-tablet">
-            <figure class="result-card">
-              <div class="paired-images">
-                <img src="assets/original/recon/hives_reconstruction.jpg" alt="Honeycomb hives reconstruction.">
-                <img src="assets/original/recon/hives_curved.jpg" alt="Honeycomb hives on curved geometry.">
-              </div>
-              <figcaption>Honeycomb hives</figcaption>
+              <figcaption>Oxidized copper patina</figcaption>
             </figure>
           </div>
         </div>
 
         <h3 class="title is-4">Single Image to Material</h3>
-        <div class="columns is-multiline i2t-samples">
+        <div class="columns is-multiline video-results">
           <div class="column is-half">
-            <figure class="result-card">
-              <div class="i2t-labels">
+            <figure class="result-card video-result-card">
+              <div class="result-labels quad-labels">
                 <span>Input</span>
-                <span>Ours Full</span>
-                <span>GT</span>
+                <span>Generated</span>
+                <span>LRM Fitting</span>
+                <span>Env Render</span>
               </div>
-              <div class="i2t-images">
-                <img class="i2t-input" src="assets/original/i2t_paper/scifi_input.jpg" alt="Sci-fi panel input.">
-                <img class="i2t-result" src="assets/original/i2t_paper/scifi_our_full.jpg" alt="VideoNeuMat full result for sci-fi panel.">
-                <img class="i2t-result" src="assets/original/i2t_paper/scifi_gt.jpg" alt="Ground truth sci-fi panel.">
+              <div class="quad-media">
+                <img src="assets/gallery/i2v/AdobeStock_1228231055_input.jpg" alt="Image prompt material sample.">
+                <video src="assets/gallery/i2v/AdobeStock_1228231055_gt.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/i2v/AdobeStock_1228231055_trainview.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/i2v/AdobeStock_1228231055_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
               </div>
+              <figcaption>Image-conditioned material sample</figcaption>
             </figure>
           </div>
           <div class="column is-half">
-            <figure class="result-card">
-              <div class="i2t-labels">
+            <figure class="result-card video-result-card">
+              <div class="result-labels quad-labels">
                 <span>Input</span>
-                <span>Ours Full</span>
-                <span>GT</span>
+                <span>Generated</span>
+                <span>LRM Fitting</span>
+                <span>Env Render</span>
               </div>
-              <div class="i2t-images">
-                <img class="i2t-input" src="assets/original/i2t_paper/rubble_input.jpg" alt="Rubble wall input.">
-                <img class="i2t-result" src="assets/original/i2t_paper/rubble_our_full.jpg" alt="VideoNeuMat full result for rubble wall.">
-                <img class="i2t-result" src="assets/original/i2t_paper/rubble_gt.jpg" alt="Ground truth rubble wall.">
+              <div class="quad-media">
+                <img src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_input.png" alt="Cartoon topographic material input.">
+                <video src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_gt.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_trainview.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                <video src="assets/gallery/i2v/Cartoon_style_orange_desert_topographic_seed5_lrm.mp4" autoplay loop muted playsinline preload="metadata"></video>
               </div>
+              <figcaption>Image-conditioned stylized terrain material</figcaption>
             </figure>
           </div>
+        </div>
+        <div class="more-results">
+          <a href="supplementary_assets.html"
+             target="_blank"
+             rel="noopener"
+             class="button is-dark is-rounded">
+            <span class="icon"><i class="fas fa-layer-group"></i></span>
+            <span>View More Results</span>
+          </a>
         </div>
       </div>
     </div>

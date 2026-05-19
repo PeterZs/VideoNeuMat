@@ -144,6 +144,59 @@ body {
   text-align: center;
 }
 
+.results-intro {
+  color: #555;
+  margin: -0.25rem 0 0.75rem;
+  max-width: 760px;
+}
+
+.video-results {
+  margin-top: 0.1rem;
+}
+
+.video-result-card video,
+.video-result-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #000;
+}
+
+.result-labels {
+  color: #555;
+  display: grid;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  gap: 1px;
+  padding-bottom: 0.35rem;
+  text-align: center;
+}
+
+.triplet-labels,
+.triplet-media {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quad-labels,
+.quad-media {
+  grid-template-columns: minmax(0, 0.82fr) repeat(3, minmax(0, 1fr));
+}
+
+.triplet-media,
+.quad-media {
+  align-items: stretch;
+  background: #cfcfcf;
+  display: grid;
+  gap: 1px;
+}
+
+.more-results {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
 .i2t-labels,
 .i2t-images {
   display: grid;
@@ -222,7 +275,12 @@ pre {
 
   .result-header span,
   .result-card figcaption,
-  .i2t-labels {
+  .i2t-labels,
+  .result-labels {
     font-size: 0.82rem;
+  }
+
+  .quad-labels {
+    font-size: 0.72rem;
   }
 }
