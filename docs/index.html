@@ -106,6 +106,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <style>
+    .nn-figure img {
+      border: none !important;
+      border-radius: 0 !important;
+    }
+
     #results .results-container > .columns > .column {
       flex: none;
       width: 100%;
@@ -751,17 +756,18 @@
         </div>
 
         <h3 class="title is-4" style="margin-top: 3rem;">Nearest-Neighbor Analysis Against MatSynth</h3>
-        <figure class="publication-banner">
+        <div class="content has-text-justified">
+          <p>
+            Each row shows one generated sample and its top nine nearest MatSynth neighbors over
+            the entire candidate pool. Nearest-neighbor results in MatSynth indicate that our
+            generated materials lie outside the dataset&rsquo;s distribution.
+          </p>
+        </div>
+        <figure class="publication-banner nn-figure">
           <a href="assets/original/nn_matsynth.jpg" target="_blank" rel="noopener">
             <img src="assets/original/nn_matsynth.jpg"
                  alt="Nearest-neighbor analysis against the complete MatSynth set: each row shows one generated sample (Ours) and its top nine nearest MatSynth neighbors (NN1-NN9).">
           </a>
-          <figcaption class="has-text-justified" style="margin-top: 1rem;">
-            <strong>Fig. 6. Nearest-neighbor analysis against the complete MatSynth set.</strong>
-            Each row shows one generated sample and its top nine nearest MatSynth neighbors over
-            the entire candidate pool. Nearest-neighbor results in MatSynth indicate that our
-            generated materials lie outside the dataset&rsquo;s distribution.
-          </figcaption>
         </figure>
       </div>
     </div>
